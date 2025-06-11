@@ -1,0 +1,164 @@
+.cadastro {
+  color: #4CAF84;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Container central da página de login */
+.cadastro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  padding: 2rem;
+}
+
+/* Formulário centralizado */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Cartão com sombra */
+.cadastro-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Campo de input com ícone */
+.input-field {
+  background-color: #4CAF84;
+  border-radius: 10px;
+  padding: 14px 18px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-field input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+}
+
+.input-field input::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
+.icon {
+  color: white;
+  font-size: 18px;
+}
+
+/* Botões principais */
+button[type="submit"],
+.register-btn {
+  background-color: #4CAF84;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+
+button[type="submit"]:hover,
+.register-btn:hover {
+  background-color: #3f996d;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  color: #4CAF84;
+}
+
+.aula-item {
+  background: #f0f0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 15px;
+}
+
+.botoes-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.visualizar-btn {
+  background-color: #4CAF84;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  max-width: 200px;
+  transition: background 0.3s, color 0.3s;
+  border: none;
+}
+
+.visualizar-btn:hover {
+ background-color: #3f996d;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-buttons button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+
+
+
+

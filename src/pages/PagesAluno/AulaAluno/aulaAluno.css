@@ -1,0 +1,92 @@
+
+.container {
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #4caf84;
+    font-weight: 200;
+  }
+  
+  .button-text {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #4caf84;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 30px;
+    transition: 0.3s;
+    color: #4caf84;
+  }
+  
+  .arrow-rotate {
+    transform: rotate(180deg);
+  }
+  
+  .day-list {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    color: #4caf84;
+    font-weight: 300;
+
+  }
+  
+  .day-list-item {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #4caf84;
+  }
+
+.detalhe-aula {
+    background-color: #4caf84;
+    padding: 30px;
+    border-radius: 20px;
+    margin-left: 400px;
+    margin-right: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .detalhe-aula-list {
+    list-style-type: none; 
+    padding: 0;
+  }
+  
+  .detalhe-aula-item {
+    display: flex; /* Utiliza flexbox para alinhar ícone e texto */
+    align-items: center; /* Alinha o ícone e o texto verticalmente */
+    margin-bottom: 10px; /* Espaçamento entre os itens */
+    font-size: 20px; /* Tamanho da fonte */
+    text-align: center;
+    
+  }
+  
+  .icons, .lotacao {
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    font-size: 18px; /* Ajuste no tamanho do ícone */
+  }
+
+  .agendar-btn{
+    background-color: white;
+    color: #5BBA89;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .agendar-btn:hover {
+    background-color: gray;
+  }
+  
+  

@@ -1,0 +1,62 @@
+.buscar-input {
+    padding: 10px;
+    font-size: 15px;
+    background-color: white;
+    border: 2px solid #4caf84;
+    border-radius: 20px;
+    margin-top: 20px;
+    display: block; /* Garante que ele se comporte como um bloco */
+    width: fit-content; /* Ajusta a largura ao conteúdo, ou defina uma largura fixa */
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+/* Para o contêiner dos alunos, assumindo que você quer centralizar o bloco completo */
+.alunos {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Se quiser centralizar verticalmente também */
+    /* Para centralizar o próprio bloco .alunos se ele tiver uma largura definida */
+    width: fit-content; /* Ou uma largura fixa, e então margin-left: auto; margin-right: auto; */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px; /* Adicione um margin-top para espaçamento */
+    background-color: #4caf84; /* Adicionei para ver o bloco e o efeito da centralização */
+    color: white;
+    border-radius: 20px;
+    padding: 15px 30px; /* Ajuste o padding para o bloco ficar mais bonito */
+}
+
+
+/* Os itens da lista dentro de .alunos */
+.alunos ul {
+    list-style: none; /* Remove os marcadores de lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Usamos flex para centralizar os itens 'li' dentro do 'ul' */
+    justify-content: center; /* Centraliza horizontalmente os 'li' */
+    align-items: center; /* Centraliza verticalmente os 'li' */
+}
+
+.alunos ul li {
+    display: inline-block; /* Altera de 'inline' para 'inline-block' para poder aplicar margin */
+    margin-right: 20px;
+    /* Se você tiver um elemento de email e nome separados, pode querer flexbox para eles também */
+}
+
+/* Ajustes para o botão editar */
+.botao-editar {
+    background-color: white;
+    border: none;
+    color: #4caf84;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer; /* Adiciona um cursor de ponteiro para indicar que é clicável */
+}
+
+.botao-editar:hover {
+    background-color: lightgray; /* Mudança de cor para indicar hover */
+    color: white; /* Cor do texto no hover */
+}

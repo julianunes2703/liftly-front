@@ -1,0 +1,89 @@
+.home-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+  gap: 2rem;
+}
+
+/* BLOCO ESQUERDO */
+.bloco-esquerda {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.slogan-pi {
+  font-size: 2rem;
+  color: #4CAF84;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.botao {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 1rem 2rem;
+}
+
+.botao button {
+  background-color: #4CAF84;          /* verde padrão */
+  color: white;                       /* texto branco */
+  border: none;
+  padding: 1rem 2rem;                 /* espaço interno */
+  border-radius: 10px;                 /* cantos arredondados */
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 160px;                   /* largura mínima para alinhar os botões */
+}
+
+.botao button:hover {
+  background-color: #45a073;         /* tom mais escuro no hover */
+}
+
+.botao button {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.botao button:active {
+  transform: scale(0.98);
+}
+
+
+/* BLOCO DIREITO (HEADER + IMAGEM) */
+.bloco-direita {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* HEADER ALINHADO À IMAGEM */
+.header-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.header-container a {
+  color: #4CAF84;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.header-container a:hover {
+  text-decoration: underline;
+}
+
+/* IMAGEM AJUSTADA */
+.imagem-pg img {
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+}

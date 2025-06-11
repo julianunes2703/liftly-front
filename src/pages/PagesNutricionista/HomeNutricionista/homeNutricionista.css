@@ -1,0 +1,55 @@
+.homeNutricionista {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 20px;
+    color: #4caf84;
+  }
+
+  .slogan-homePage{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 50px;
+    margin-left: 100px;
+  }
+
+  
+  .botoes {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+  
+  .botoes button {
+    background-color: #4caf84;
+    border: none;
+    padding: 20px 40px;
+    font-size: 16px;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+  
+  .botoes button:hover {
+    background-color: rgba(0, 0, 0, 0.35);
+  }
+
+  .img img {
+    width: 300px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto;
+    border-radius: 8px; 
+  }
+
+  .img-container{
+    display: flex;
+    justify-content: center; 
+    gap: 40px; 
+    width: 100%; 
+    align-items: center;
+    padding-left: 220px;
+  }
+  

@@ -18,6 +18,8 @@ import HomeAcademia from './pages/PagesAcademia/HomeAcademia/homeAcademia';
 import CadastrarAluno from './pages/PagesAcademia/CadastroAluno/cadastroAluno';
 import CadastrarAulas from './pages/PagesAcademia/CadastrarAulas/cadastrarAulas';
 import CadastrarPersonal from './pages/PagesAcademia/CadastroPersonal/cadastroPersonal';
+import LoginAcademia from './pages/PagesAcademia/LoginAcademia/loginAcademia';
+import CadastroAcademia from './pages/PagesAcademia/CadastroAcademia/cadastroAcademia';
 
 import HomeNutricionista from './pages/PagesNutricionista/HomeNutricionista/homeNutricionista';
 import HomePersonal from './pages/PagesPersonal/HomePersonal/homePersonal';
@@ -55,6 +57,8 @@ function App() {
         <Route path='/cadastroAluno' element={<CadastrarAluno/>} />
         <Route path='/cadastrarAulas' element={<CadastrarAulas/>} />
         <Route path='/cadastroPersonal' element={<CadastrarPersonal/>} />
+        <Route path='/loginAcademia' element={<LoginAcademia/>} />
+        <Route path='/cadastroAcademia' element={<CadastroAcademia/>} />
 
         <Route path='/homeNutricionista' element={<HomeNutricionista/>} />
         <Route path='/marketNutricionistaAlunos' element={<MarketNutricionistaAlunos/>} />

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { BsTelephone } from "react-icons/bs";
 import { FaUser } from 'react-icons/fa';
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -17,9 +18,15 @@ const CadastrarPersonal = () => {
     const [mostrarModal, setMostrarModal] = useState(false);
     const [busca, setBusca] = useState("");
 
+       useEffect(() => {
+            fetchPersonais();
+        }, []);
+
+
     // Função de cadastro
     const handleCadastro = async (e) => {
         e.preventDefault();
+
 
         // Validação básica dos campos obrigatórios
         if (!nome || !email || !telefone) {
@@ -27,21 +34,17 @@ const CadastrarPersonal = () => {
             return;
         }
 
-        // Obtém o token da academia logada do localStorage
-        // É essencial que a academia tenha feito login e seu token esteja salvo aqui.
+     
         const token = localStorage.getItem('tokenAcademia'); 
         if (!token) {
             setErro("Você precisa estar logado como Academia para cadastrar personal trainers.");
-            // Você pode redirecionar para a página de login da academia aqui
-            // navigate('/loginAcademia');
             return;
         }
 
         try {
-            // Os dados do body já estão 'trimados' pelos onChange dos inputs
-            // O gymId não precisa ser enviado aqui, pois o back-end irá obtê-lo do token.
+            
             const resposta = await axios.post(
-                `http://localhost:3001/gyms/register-user`, // URL do novo endpoint no gymRoutes.js
+                'http://localhost:3001/gyms/register-user', // URL do novo endpoint no gymRoutes.js
                 {
                     name: nome, // nome já está 'trimado' via onChange
                     email: email, // email já está 'trimado' via onChange
@@ -56,9 +59,6 @@ const CadastrarPersonal = () => {
                     }
                 }
             );
-
-            // Atualiza a lista local de personais com o usuário retornado pelo back-end
-            // O back-end retorna 'user' dentro de 'resposta.data'
             setPersonais([...personais, resposta.data.user]); 
             setNome("");
             setEmail("");
@@ -74,25 +74,28 @@ const CadastrarPersonal = () => {
         }
     };
 
-    // Função para excluir personal trainer (lógica local, futuro: interagir com backend)
     const handleRemoverPersonal = async (id) => {
         // Lógica para remover do estado local (front-end)
         setPersonais(personais.filter(personal => personal.id !== id));
-
-        // TODO: Futuro: Implementar a exclusão no backend
-        // try {
-        //     const token = localStorage.getItem('tokenAcademia');
-        //     await axios.delete(`http://localhost:3001/gyms/${gymId}/users/${id}`, {
-        //         headers: {
-        //             'Authorization': `Bearer ${token}`
-        //         }
-        //     });
-        //     alert('Personal Trainer removido do sistema da academia!');
-        // } catch (error) {
-        //     console.error("Erro ao remover personal do backend:", error);
-        //     alert('Erro ao remover personal trainer do sistema da academia.');
-        // }
     };
+
+        const fetchPersonais = async () => {
+            console.log("🔍 Buscando personais...");
+
+                const token = localStorage.getItem('tokenAcademia');
+                try {
+                    const response = await axios.get('http://localhost:3001/gyms/trainers', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                    });
+                    setPersonais(response.data); // ← agora vai aparecer no modal
+                } catch (err) {
+                    console.error("Erro ao buscar personais:", err);
+                }
+                };
+
+
 
     // Filtra a lista de personais para exibição no modal
     const personaisFiltrados = personais.filter((p) =>
@@ -134,7 +137,13 @@ const CadastrarPersonal = () => {
                         {erro && <p className="error-message">{erro}</p>}
 
                         <button type="submit">Confirmar</button>
-                        <button type="button" onClick={() => setMostrarModal(true)}>Visualizar Personais Trainers</button>
+                            <button type="button" onClick={() => {
+                                         fetchPersonais();          
+                                         setMostrarModal(true);
+                                        }}>
+                            Visualizar Personais Trainers
+                        </button>
+
                     </div>
                 </form>
             </div>

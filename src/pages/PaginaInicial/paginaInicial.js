@@ -17,7 +17,7 @@ function PaginaInicial() {
             <h2 className="slogan-pi">Seu eu do futuro agradece</h2>
             <div className="botao">
             <button onClick={() => navigate('/login')}>Aluno</button>
-            <button onClick={() => navigate('/login')}>Academia</button>
+            <button onClick={() => navigate('/loginAcademia')}>Academia</button>
             <button onClick={() => navigate('/login')}>Personal Trainer</button>
             <button onClick={() => navigate('/login')}>Nutricionista</button>
             </div>

@@ -124,12 +124,9 @@ const Cadastro = () => {
                             />
                         </div>
 
-                        {/* Telefone: Agora visível para teacher, owner, nutritionist E student */}
-                        {/* Se ele deve ser visível para TODOS, a condição deve ser removida ou simplificada */}
                         {role && (role.value === 'teacher' || role.value === 'owner' || role.value === 'nutritionist' || role.value === 'student') && (
                             <div className="input-field">
                                 <FaPhoneAlt className="icon" />
-                                {/* Aplica .trim() no onChange para 'telefone' */}
                                 <input type="tel" placeholder="Telefone" value={telefone} onChange={(e) => setTelefone(e.target.value.trim())} />
                             </div>
                         )}
@@ -138,7 +135,7 @@ const Cadastro = () => {
                             <>
                                 <div className="input-field">
                                     <GiBodyHeight className="icon" />
-                                    {/* Altura e Peso são números, não precisam de trim, mas pode-se converter para Number */}
+                                
                                     <input type="text" placeholder="Altura" value={altura} onChange={(e) => setAltura(e.target.value)} />
                                 </div>
 

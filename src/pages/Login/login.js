@@ -15,40 +15,50 @@ const Login = ({ tipoUsuario }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+     const trimmedUsuario = usuario.trim();
+      const trimmedSenha = senha.trim();
+
     if (!usuario || !senha) {
       alert("Preencha todos os campos!");
       return;
     }
 
     try {
+      console.log('Tentando logar com', { trimmedUsuario, trimmedSenha });
+
+
       const res = await axios.post('http://localhost:3001/users/login', {
         email: usuario,
         password: senha
       });
 
-      const user = res.data.user;
+      console.log('RES.DATA:', res.data);
+      console.log('USER RECEBIDO:', res.data.user);
+
+
+      const { user, token } = res.data;
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(user));
 
       alert(`Bem-vindo, ${user.name}!`);
 
+     // Depois de armazenar token e user…
+      console.log('→ Navegando com tipo:', user.tipo);
+
       switch (user.tipo) {
         case "student":
-            navigate("/homeAluno");
-            break;
+          return navigate("/homeAluno");   
         case "teacher":
-            navigate("/homePersonal");
-            break;
-        case "owner":
-            navigate("/homeAcademia");
-            break;
+          return navigate("/homePersonal");
         case "nutritionist":
-            navigate("/homeNutricionista");
-            break;
+          return navigate("/homeNutricionista");
         default:
+          return (() => {                   
             alert("Tipo de usuário inválido!");
             navigate("/login");
-        }
+          })();
+      }
+
 
 
     } catch (err) {

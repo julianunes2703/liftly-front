@@ -9,7 +9,7 @@ import './cadastroPersonal.css';
 import axios from 'axios';
 
 const CadastrarPersonal = () => {
-    // Inicialização dos estados com .trim() nos setters para garantir dados limpos desde o início
+  
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [telefone, setTelefone] = useState("");
@@ -23,12 +23,12 @@ const CadastrarPersonal = () => {
         }, []);
 
 
-    // Função de cadastro
+ 
     const handleCadastro = async (e) => {
         e.preventDefault();
 
 
-        // Validação básica dos campos obrigatórios
+   
         if (!nome || !email || !telefone) {
             setErro("Preencha todos os campos.");
             return;
@@ -50,10 +50,10 @@ const CadastrarPersonal = () => {
                     email: email, // email já está 'trimado' via onChange
                     telefone: telefone, // telefone já está 'trimado' via onChange
                     role: 'teacher', // Papel no sistema (para o modelo User)
-                    // Não há campo de senha no formulário, o back-end vai gerar uma temporária.
+                  
                 },
                 {
-                    // Envia o token de autorização nos headers
+                  
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
@@ -79,21 +79,25 @@ const CadastrarPersonal = () => {
         setPersonais(personais.filter(personal => personal.id !== id));
     };
 
-        const fetchPersonais = async () => {
+    const fetchPersonais = async () => {
             console.log("🔍 Buscando personais...");
 
-                const token = localStorage.getItem('tokenAcademia');
-                try {
-                    const response = await axios.get('http://localhost:3001/gyms/trainers', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                    });
-                    setPersonais(response.data); // ← agora vai aparecer no modal
-                } catch (err) {
-                    console.error("Erro ao buscar personais:", err);
+            const token = localStorage.getItem('tokenAcademia');
+
+            try {
+                const response = await axios.get('http://localhost:3001/gyms/trainers', {
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
-                };
+                });
+                
+                setPersonais(response.data);
+
+            } catch (err) {
+                console.error("Erro ao buscar personais:", err);
+            }
+    };
+
 
 
 

@@ -63,7 +63,7 @@ export default function CadastrarAulas() {
   // Cadastra ou atualiza uma aula
   const handleCadastro = async e => {
     e.preventDefault();
-    if (!horario || !nomeAula || !nomeProfessor || !lotacao || !duracao) {
+    if (!horario || !nomeAula || !selectedProfessorId || !lotacao || !duracao) {
       setErro("Preencha todos os campos!");
       return;
     }
@@ -140,18 +140,31 @@ export default function CadastrarAulas() {
     setEditandoAulaId(aula.id);
   };
 
-         //função apra buscar professor
-      const fetchProfessores = async () => {
-          const token = localStorage.getItem('token');
-          try {
-              const response = await axios.get('http://localhost:3001/gyms/trainers', {
-              headers: { Authorization: `Bearer ${token}` }
-              });
-              setProfessores(response.data);
-          } catch (err) {
-              console.error('Erro ao buscar professores:', err);
-          }
-        };
+     const fetchProfessores = async () => {
+        const token = localStorage.getItem('token');
+        try {
+          const response = await axios.get('http://localhost:3001/gyms/trainers', {
+            headers: { Authorization: `Bearer ${token}` }
+          });
+
+          const professoresExtraidos = response.data
+            .filter(p => p)
+            .map(p => ({
+              id: p.id,
+              name: p.name,
+              email: p.email
+            }));
+
+            console.log("📦 Professores recebidos:", response.data);
+
+
+          setProfessores(professoresExtraidos);
+        } catch (err) {
+          console.error('Erro ao buscar professores:', err);
+        }
+      };
+
+
 
   if (loading) return <div className="loading-message">Carregando aulas...</div>;
 
@@ -190,13 +203,15 @@ export default function CadastrarAulas() {
             </div>
               <div className="input-field">
                   <FaRegUserCircle className="icon"/>
-                  <select value={selectedProfessorId} onChange={e => setSelectedProfessorId(e.target.value)}>
-                    <option value="">Selecione o professor</option>
-                    {professores.map(p => (
-                      <option key={p.id} value={p.id}>{p.name} ({p.email})</option>
-                    ))}
-                  </select>
-            </div>
+               <select value={selectedProfessorId} onChange={e => setSelectedProfessorId(e.target.value)}>
+                  <option value="">Selecione o professor</option>
+                  {professores.map(p => (
+                    <option key={p.id} value={p.id}>
+                      {p.name} ({p.email})
+                    </option>
+                  ))}
+                </select>
+              </div>
 
             <div className="input-field">
               <IoPeopleSharp className="icon"/>
@@ -257,7 +272,7 @@ export default function CadastrarAulas() {
               {aulas.map(aula => (
                 <div key={aula.id} className="aula-item">
                   <p><strong>Aula:</strong> {aula.name}</p>
-                  <p><strong>Professor:</strong> {aula.instructor.name}</p>
+                  <p><strong>Professor:</strong> {aula.instructor?.name || 'Indefinido'}</p>
                   <p><strong>Horário:</strong> {new Date(aula.startTime).toLocaleString()}</p>
                   <p><strong>Duração:</strong> {aula.duration} min</p>
                   <p><strong>Lotação:</strong> {aula.maxCapacity} alunos</p>

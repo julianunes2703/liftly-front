@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsTelephone } from "react-icons/bs";
 import { FaUser } from 'react-icons/fa';
 import { MdOutlineMailOutline } from "react-icons/md";
@@ -26,19 +26,15 @@ const CadastrarAluno = () => {
             return;
         }
 
-        // Obtém o token da academia logada do localStorage
-        // É essencial que a academia tenha feito login e seu token esteja salvo aqui.
+ 
         const token = localStorage.getItem('tokenAcademia');
         if (!token) {
             setErro("Você precisa estar logado como Academia para cadastrar alunos.");
-            // Você pode redirecionar para a página de login da academia aqui
-            // navigate('/loginAcademia');
             return;
         }
 
         try {
-            // Os dados do body já estão 'trimados' pelos onChange dos inputs
-            // O gymId não precisa ser enviado aqui, pois o back-end irá obtê-lo do token.
+
             const resposta = await axios.post(
                 `http://localhost:3001/gyms/register-user`, // URL do novo endpoint no gymRoutes.js
                 {
@@ -46,10 +42,6 @@ const CadastrarAluno = () => {
                     email: email, // email já está 'trimado' via onChange
                     telefone: telefone, // telefone já está 'trimado' via onChange
                     role: 'student', // Papel no sistema (para o modelo User)
-                    // Não há campo de senha no formulário, o back-end vai gerar uma temporária.
-                    // Se houver campos como peso/altura para o aluno no cadastro da academia, adicione-os aqui:
-                    // peso: peso,
-                    // altura: altura,
                 },
                 {
                     // Envia o token de autorização nos headers
@@ -59,8 +51,6 @@ const CadastrarAluno = () => {
                 }
             );
 
-            // Atualiza a lista local de alunos com o usuário retornado pelo back-end
-            // O back-end retorna 'user' dentro de 'resposta.data'
             setAlunos([...alunos, resposta.data.user]);
             setNome("");
             setEmail("");
@@ -80,26 +70,39 @@ const CadastrarAluno = () => {
     const handleRemoverAluno = async (id) => {
         // Lógica para remover do estado local (front-end)
         setAlunos(alunos.filter(aluno => aluno.id !== id));
-
-        // TODO: Futuro: Implementar a exclusão no backend
-        // try {
-        //     const token = localStorage.getItem('tokenAcademia');
-        //     await axios.delete(`http://localhost:3001/gyms/${gymId}/users/${id}`, {
-        //         headers: {
-        //             'Authorization': `Bearer ${token}`
-        //         }
-        //     });
-        //     alert('Aluno removido do sistema da academia!');
-        // } catch (error) {
-        //     console.error("Erro ao remover aluno do backend:", error);
-        //     alert('Erro ao remover aluno do sistema da academia.');
-        // }
     };
 
-    // Filtra a lista de alunos para exibição no modal
-    const alunosFiltrados = alunos.filter((a) =>
-        a.name.toLowerCase().includes(busca.toLowerCase()) // Usa 'a.name' pois o objeto 'user' do back-end tem 'name'
-    );
+    const fetchAlunos = async () => {
+    console.log("🔍 Buscando alunos...");
+
+    const token = localStorage.getItem('tokenAcademia');
+    if (!token) {
+        console.error("⚠️ Token da academia não encontrado");
+        return;
+    }
+
+    try {
+        const resposta = await axios.get('http://localhost:3001/gyms/students', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        setAlunos(resposta.data); // ← atualiza o estado com os alunos salvos no banco
+    } catch (error) {
+        console.error("Erro ao buscar alunos:", error);
+    }
+};
+
+
+    useEffect(() => {
+        fetchAlunos(); // ← carrega os alunos do backend
+    }, []);
+
+
+        const alunosFiltrados = alunos.filter(
+            (a) => a?.name?.toLowerCase().includes(busca.toLowerCase())
+        );
+
 
     return (
         <div>

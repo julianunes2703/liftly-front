@@ -15,12 +15,14 @@ function MarketPersonalAlunos(){
         <div className="market-personal">
             <Perfil/>
 
-            <Menu
+              <Menu
             links={[
-                {label: "Home", href: "/homePersonal"},
-                {label: "Criar Ficha", href:'/marketPersonalFicha'},
-                {label:"Meus Alunos", href:"/marketPersonalAlunos"}
-            ]}/>
+            { label: "Home", href: "/homePersonal" },
+            {label: "Criar ficha", href:"/marketPersonalFicha"},
+            { label: "Meus Alunos", href: "/marketPersonalAlunos"},
+            {label: "Cadastrar Anúncio", href: '/cadastroServicoPersonal'}
+             ]}
+            />
 
             <h1>Liftly Market</h1>
 

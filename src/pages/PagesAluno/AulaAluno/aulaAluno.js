@@ -8,54 +8,50 @@ import { IoPeopleSharp } from "react-icons/io5";
 
 const AgendarAulas = () => {
     const [showDays, setShowDays] = useState(false);
-    // Podemos inicializar com o dia atual ou 'Todos os Dias' para buscar tudo no início
     const [selectedDay, setSelectedDay] = useState(''); // Estado para filtrar por dia da semana
     const [aulasDisponiveis, setAulasDisponiveis] = useState([]); // Aulas carregadas do back-end
     const [meusAgendamentos, setMeusAgendamentos] = useState([]); // Agendamentos do aluno logado
     const [loading, setLoading] = useState(true); // Estado de carregamento
-    const [error, setError] = useState(null); // Estado para erros
+    const [error, setError] = useState(null); 
 
-    // Função para buscar o token do aluno logado
+    
     const getToken = () => {
-        // Suponha que o token do ALUNO esteja salvo em 'tokenAluno' no localStorage
-        // Você precisará garantir que seu fluxo de login do aluno salve o token como 'tokenAluno'
-        const token = localStorage.getItem('token'); // Ou 'tokenAluno' se você usa um nome diferente
+        const token = localStorage.getItem('token'); 
         return token;
     };
 
     // Função para buscar aulas disponíveis do back-end
-    const fetchAvailableClasses = async () => {
-        setLoading(true);
-        setError(null);
-        try {
-            const token = getToken();
-            if (!token) {
-                setError("Você precisa estar logado para ver as aulas.");
-                setLoading(false);
-                return;
-            }
+   const fetchAvailableClasses = async () => {
+  setLoading(true);
+  
+  setError(null);
+  try {
+    const token = getToken();
+    if (!token) {
+      setError("Você precisa estar logado para ver as aulas.");
+      setLoading(false);
+      return;
+    }
 
-            // Opcional: Pegar o ID da academia do aluno logado (se você tem essa informação no token ou perfil)
-            // Ou o aluno pode selecionar a academia para a qual quer ver as aulas.
-            // Por simplicidade, vamos deixar sem gymId no início ou adicionar um fixo para teste
-            const gymId = "SEU_GYM_ID_FIXO_PARA_TESTE"; // <<--- SUBSTITUA PELO ID REAL DE UMA ACADEMIA QUE TENHA AULAS
+    // Busca o gymId real
+    const responseGym = await axios.get('http://localhost:3001/usergym/my-gym', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    const gymId = responseGym.data.gymId;
 
-            // Construir a URL com o gymId na query, se ele existir
-            const url = gymId ? `http://localhost:3001/schedules/available-classes?gymId=${gymId}` : `http://localhost:3001/schedules/available-classes`;
+    const response = await axios.get(`http://localhost:3001/schedules/available-classes?gymId=${gymId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
 
-            const response = await axios.get(url, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            setAulasDisponiveis(response.data);
-        } catch (err) {
-            console.error("Erro ao carregar aulas disponíveis:", err.response?.data || err);
-            setError(err.response?.data?.error || "Erro ao carregar aulas. Tente novamente.");
-        } finally {
-            setLoading(false);
-        }
-    };
+    setAulasDisponiveis(response.data);
+  } catch (err) {
+    console.error("Erro ao carregar aulas disponíveis:", err);
+    setError("Erro ao buscar aulas disponíveis");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
     // Função para buscar os agendamentos do aluno logado
     const fetchMySchedules = async () => {

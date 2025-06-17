@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FaUser, FaLock, FaMapMarkerAlt } from 'react-icons/fa';
+import { MdEmail } from "react-icons/md";
+import { IoPeopleSharp } from "react-icons/io5";
+
+
+import LogoLiftly from '../../../components/liftly/liftly';
+import './cadastroAcademia.css';
 
 export default function CadastroAcademia() {
   const [name, setName]                   = useState('');
   const [email, setEmail]                 = useState('');
   const [password, setPassword]           = useState('');
   const [endereco, setEndereco]           = useState('');
-  const [telefone, setTelefone]           = useState('');
   const [ocupacaoMaxima, setOcupacaoMaxima] = useState('');
   const navigate = useNavigate();
 
@@ -19,7 +25,6 @@ export default function CadastroAcademia() {
         email: email.trim(),
         password: password.trim(),
         endereco: endereco.trim(),
-        telefone: telefone.trim(),
         ocupacaoMaxima: Number(ocupacaoMaxima)
       };
       const { data } = await axios.post('http://localhost:3001/gyms', body);
@@ -33,14 +38,23 @@ export default function CadastroAcademia() {
   };
 
   return (
+    <div>
+     <LogoLiftly/>
+    <div className='cadastro-academia-container'>
             <form onSubmit={handleSubmit}>
-            <h2>Cadastro de Academia</h2>
+            <h1 className='cadastro'>Cadastro de Academia</h1>
+            <div className='cadastro-academia-card'>
+              <div className="input-field">
+                <FaUser className="icon" />
             <input
                 placeholder="Nome da Academia"
                 value={name}
                 onChange={e => setName(e.target.value)}
                 required
             />
+            </div>
+            <div className="input-field">
+              <MdEmail className="icon" />
             <input
                 type="email"
                 placeholder="E-mail"
@@ -48,6 +62,9 @@ export default function CadastroAcademia() {
                 onChange={e => setEmail(e.target.value)}
                 required
             />
+            </div>
+            <div className="input-field">
+              <FaLock className="icon" />
             <input
                 type="password"
                 placeholder="Senha"
@@ -55,12 +72,18 @@ export default function CadastroAcademia() {
                 onChange={e => setPassword(e.target.value)}
                 required
             />
+            </div>
+            <div className='input-field'>
+              <FaMapMarkerAlt className='icon'/>
             <input
                 placeholder="Endereço"
                 value={endereco}
                 onChange={e => setEndereco(e.target.value)}
                 required
             />
+            </div>
+            <div className='input-field'>
+              <IoPeopleSharp className='icon'/>
             <input
                 type="number"
                 placeholder="Ocupação Máxima"
@@ -68,7 +91,11 @@ export default function CadastroAcademia() {
                 onChange={e => setOcupacaoMaxima(e.target.value)}
                 required
             />
+            </div>
             <button type="submit">Cadastrar Academia</button>
+            </div>
             </form>
+   </div>
+ </div>
   );
 }

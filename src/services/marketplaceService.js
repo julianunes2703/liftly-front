@@ -100,3 +100,31 @@ export const deleteProviderService = async (serviceId) => {
         throw error;
     }
 };
+
+export const getPersonals = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error("Usuário não autenticado.");
+
+    const response = await axios.get('http://localhost:3001/marketplace/personal', {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return response.data;
+};
+
+export const getNutritionists = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) throw new Error("Usuário não autenticado.");
+
+    const response = await axios.get('http://localhost:3001/marketplace/nutricionist', {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return response.data;
+};
+
+

@@ -6,13 +6,14 @@ import Cadastro from './pages/Cadastro/cadastro';
 import EsqueceuSenha from './pages/EsqueceuSenha/esqueceuSenha';
 import PerfilGlobal from './pages/PerfilGlobal/perfilGlobal';
 
+
 import HomeAluno from './pages/PagesAluno/HomeAluno/homeAluno';
 import AgendarAulas from './pages/PagesAluno/AulaAluno/aulaAluno';
 import TreinoAluno from './pages/PagesAluno/TreinoAluno/treinoAluno';
 import DietaAluno from './pages/PagesAluno/DietaAluno/dietaAluno';
 import ListaProfissionais from './pages/PagesAluno/MarketAluno/listaPersonal';
-import PaginaProfissional from './pages/PagesAluno/MarketAluno/paginaProfissional';
 import ListaNutricionistas from './pages/PagesAluno/MarketAluno/listaNutri';
+
 
 import HomeAcademia from './pages/PagesAcademia/HomeAcademia/homeAcademia';
 import CadastrarAluno from './pages/PagesAcademia/CadastroAluno/cadastroAluno';
@@ -27,6 +28,8 @@ import MarketPersonalAlunos from './pages/PagesPersonal/MarketPersonal/marketPer
 import MarketPersonalFicha from './pages/PagesPersonal/MarketPersonal/marketPersonal-ficha';
 import MarketNutricionistaAlunos from './pages/PagesNutricionista/MarketNutricionista/marketNutricionista-alunos';
 import MarketNutricionistaDieta from './pages/PagesNutricionista/MarketNutricionista/marketNutricionista-dieta';
+import CadastroServicoNutri from './pages/PagesNutricionista/MarketNutricionista/CadastrarServico/cadastroServicoNutri';
+import CadastroServicoPersonal from './pages/PagesPersonal/MarketPersonal/CadastroServico/cadasatroServicoPersonal';
 
 
 
@@ -49,8 +52,8 @@ function App() {
         <Route path='/treinoAluno' element={<TreinoAluno/>} />
         <Route path='/dietaAluno' element={<DietaAluno/>} />
         <Route path='/listaProfissionais' element={<ListaProfissionais/>} />
-        <Route path='/paginaProfissional' element={<PaginaProfissional/>} />
         <Route path="/listaNutricionistas" element={<ListaNutricionistas />} />
+  
 
 
         <Route path='/homeAcademia' element={<HomeAcademia/>} />
@@ -63,10 +66,12 @@ function App() {
         <Route path='/homeNutricionista' element={<HomeNutricionista/>} />
         <Route path='/marketNutricionistaAlunos' element={<MarketNutricionistaAlunos/>} />
         <Route path='/marketNutricionistaDieta' element={<MarketNutricionistaDieta/>} />
+        <Route path='/cadastroServicoNutri' element={<CadastroServicoNutri/>} />
 
         <Route path='/homePersonal' element={<HomePersonal/>} />
         <Route path='/marketPersonalAlunos' element={<MarketPersonalAlunos/>} />
         <Route path='/marketPersonalFicha' element={<MarketPersonalFicha/>} />
+        <Route path='/cadastroServicoPersonal' element={<CadastroServicoPersonal/>} />
 
         
       </Routes>

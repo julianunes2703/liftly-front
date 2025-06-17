@@ -1,0 +1,118 @@
+.cadastro {
+  color: #4CAF84;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Container central da página de login */
+.cadastro-academia-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+  padding: 2rem;
+}
+
+/* Formulário centralizado */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Cartão com sombra */
+.cadastro-academia-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Campo de input com ícone */
+.input-field {
+  background-color: #4CAF84;
+  border-radius: 10px;
+  padding: 14px 18px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-field input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+}
+
+.input-field input::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
+.icon {
+  color: white;
+  font-size: 18px;
+}
+
+/* Botões principais */
+button[type="submit"],
+.register-btn {
+  background-color: #4CAF84;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+  width: 100%;
+  max-width: 200px;
+}
+
+button[type="submit"]:hover,
+.register-btn:hover {
+  background-color: #3f996d;
+}
+
+
+
+/* Mensagem de erro */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: -10px;
+  font-weight: bold;
+}
+
+.input-field textarea {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+  resize: vertical;
+  min-height: 80px;
+  padding: 12px 24px;
+}
+
+.input-field textarea::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+

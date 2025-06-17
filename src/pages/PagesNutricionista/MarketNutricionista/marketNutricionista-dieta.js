@@ -77,12 +77,12 @@ function MarketNutricionistaDieta() {
     <div className="market-dieta">
       <Perfil />
       <Menu
-        links={[
-          { label: "Home", href: "/homeNutricionista" },
-          {label: "Criar Dieta", href: "/homeNutricionistaDieta"},
-          { label: "Meus Alunos", href: "/marketNutricionistaAlunos" }
-        ]}
-      />
+            links={[
+                {label: "Home", href: "/homeNutricionista"},
+                {label: "Criar Dieta", href:"/marketNutricionistaDieta"},
+                {label:"Meus Alunos", href:"/marketNutricionistaAlunos"},
+                {label: "Cadastrar Anúncio", href:"/cadastroServicoNutri"}
+            ]}/>
       <h1>Liftly Market</h1>
 
               <div className="buscar-aluno">

@@ -158,6 +158,10 @@ button[type="submit"]:hover,
   transition: background 0.3s, color 0.3s;
 }
 
+option{
+  border: none;
+}
+
 
 
 

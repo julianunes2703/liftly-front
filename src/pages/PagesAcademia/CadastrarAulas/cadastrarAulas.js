@@ -155,7 +155,7 @@ export default function CadastrarAulas() {
               email: p.email
             }));
 
-            console.log("📦 Professores recebidos:", response.data);
+            console.log("Professores recebidos:", response.data);
 
 
           setProfessores(professoresExtraidos);

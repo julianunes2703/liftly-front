@@ -87,7 +87,7 @@ function ListaNutricionistas() {
                                 <p>{p.description || "Sem descrição."}</p> {/* Usa a descrição do serviço */}
                                 <p>Preço: R$ {p.price ? p.price.toFixed(2) : 'N/A'}</p> {/* Exibe o preço */}
                             </div>
-                            {/* O botão "Ver mais" pode levar para uma página de detalhes do serviço ou do provedor */}
+                           
                             <button className="btn-vermais" onClick={() => handleContact(p.provider.telefone)}>Entrar em contato</button>
                         </div>
                     ))

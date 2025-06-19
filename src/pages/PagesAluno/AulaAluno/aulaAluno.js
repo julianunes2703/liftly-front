@@ -203,7 +203,6 @@ const AgendarAulas = () => {
                 </ul>
             )}
 
-            {/* Detalhes das Aulas Disponíveis */}
             <h2 className="section-title">Aulas Disponíveis</h2>
             <div className="detalhe-aula">
                 {aulasDisponiveis.length === 0 ? (
@@ -215,7 +214,8 @@ const AgendarAulas = () => {
                         const displayStartTime = new Date(aula.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
                         return (
-                            <ul key={aula.id} className="detalhe-aula-list detalhe-aula-row">
+                            <div key={aula.id} className="aula-card">
+                            <ul className="detalhe-aula-list detalhe-aula-row">
                                 <li className="detalhe-aula-item"> <CiClock2 className='icons'/>{displayStartTime}</li>
                                 <li className="detalhe-aula-item"> <FaListUl className="icons" />{aula.name}</li> {/* Use aula.name */}
                                 <li className="detalhe-aula-item"> <FaRegUserCircle className="icons"/>{aula.instructor.name}</li> {/* Use aula.instructor.name */}
@@ -239,6 +239,7 @@ const AgendarAulas = () => {
                                     )}
                                 </li>
                             </ul>
+                            </div>
                         );
                     })
                 )}

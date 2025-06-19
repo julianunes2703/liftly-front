@@ -48,23 +48,22 @@
   }
 
 .detalhe-aula {
-    background-color: #4caf84;
     padding: 30px;
     border-radius: 20px;
     margin-left: 400px;
     margin-right: 400px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   .detalhe-aula-list {
     list-style-type: none; 
     padding: 0;
+    margin-bottom: 20px;
   }
   
   .detalhe-aula-item {
     display: flex; /* Utiliza flexbox para alinhar ícone e texto */
     align-items: center; /* Alinha o ícone e o texto verticalmente */
-    margin-bottom: 10px; /* Espaçamento entre os itens */
+   margin-bottom: 20px; /* separa visualmente as aulas */
     font-size: 20px; /* Tamanho da fonte */
     text-align: center;
     
@@ -88,5 +87,16 @@
   .agendar-btn:hover {
     background-color: gray;
   }
+
+.aula-card {
+ background-color: #4caf84;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+
   
   

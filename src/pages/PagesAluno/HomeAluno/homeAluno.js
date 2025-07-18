@@ -40,7 +40,7 @@ function HomeAluno() {
         <div className="homeAluno-body">
           <h1>Bem vindo!</h1>
           <div className="botoes">
-            <button onClick={() => navigate("/treinoAluno")}>Inicial Treino</button>
+            <button onClick={() => navigate("/treinoAluno")}>Iniciar Treino</button>
             <button onClick={() => navigate("/dietaAluno")}>Visualizar Dieta</button>
             <button onClick={() => navigate("/aulaAluno")}>Agendar Aula</button>
           </div>

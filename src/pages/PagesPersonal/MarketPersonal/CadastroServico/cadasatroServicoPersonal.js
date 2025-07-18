@@ -13,7 +13,6 @@ function CadastroServicoPersonal(){
         links={[
           { label: "Home", href: "/homePersonal" },
           {label: "Criar ficha", href:"/marketPersonalFicha"},
-          { label: "Meus Alunos", href: "/marketPersonalAlunos"},
           {label: "Cadastrar Anúncio", href: '/cadastroServicoPersonal'}
         ]}
       />

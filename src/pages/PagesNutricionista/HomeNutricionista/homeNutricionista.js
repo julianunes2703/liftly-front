@@ -13,19 +13,19 @@ function HomeNutricionista() {
     <div className="homeNutricionista">
         <Perfil/>
 
-          <Menu
-        links={[
-            { label: "Home", href: "/homeNutricionista"},
-            {label: "Liftly Market", href:"/marketNutricionistaDieta"}
-              ]}
-        />
+           <Menu
+            links={[
+                {label: "Home", href: "/homeNutricionista"},
+                {label: "Criar Dieta", href:"/marketNutricionistaDieta"},
+                {label: "Cadastrar Anúncio", href:"/cadastroServicoNutri"}
+            ]}/>
 
       <div className="img-container">
         <div className="homeNutricionista-body">
           <h1>Bem vinda, Nutri!</h1>
           <div className="botoes">
-            <button onClick={() => navigate("/marketNutricionistaAlunos")}>Lista de alunos</button>
-            <button onClick={() => navigate("/marketNutricionistaDieta")}>Liftly Market</button>
+            <button onClick={() => navigate("/marketNutricionistaDieta")}>Criar Dieta</button>
+            <button onClick={() => navigate("/cadastroServicoNutri")}> Cadastrar Novo Anúncio</button>
           </div>
         </div>
         <div className="img">

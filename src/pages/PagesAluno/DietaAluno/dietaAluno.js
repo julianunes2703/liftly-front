@@ -1,86 +1,115 @@
-import React, { useState } from 'react';
+// Arquivo: DietaAluno.js
+import React, { useState, useEffect } from 'react';
 import './dietaAluno.css';
 import { MdFoodBank } from "react-icons/md";
 import Menu from '../../../components/menu-lateral/menu-lateral';
 import Perfil from '../../../components/perfil/perfil';
 
-const dieta = [
-  {
-    nomeRefeicao: 'Café da Manhã',
-    calorias: '350kcal',
-    dataCriacao: '2024-05-11',
-    alimentos: [
-      { alimento: "2 pães integrais" },
-      { alimento: "100g de ovo" },
-      { alimento: "100g de mamão/melancia/morango/melão" }
-
-    ]
-  },
-  {
-    nomeRefeicao: 'Almoço',
-    calorias: '450kcal',
-    dataCriacao: '2024-05-11',
-    alimentos: [
-      { alimento: "100g de arroz" },
-      { alimento: "80g de feijão" },
-      { alimento: "100g de proteína (frango, patinho, tilápia)" },
-      { alimento: "salada à vontade" }
-    ]
-  }
-];
-
 function DietaAluno() {
-  const [detalheAberto, setDetalheAberto] = useState(null);
+  const [dietas, setDietas] = useState([]);
+  const [dietaAberta, setDietaAberta] = useState(null);
+  const [refeicaoAberta, setRefeicaoAberta] = useState(null);
+  const user = JSON.parse(localStorage.getItem("user"));
 
-  const toggleDetalhes = (index) => {
-    setDetalheAberto(detalheAberto === index ? null : index);
+  useEffect(() => {
+    const fetchDietas = async () => {
+      if (!user?.id) return;
+
+      try {
+        const res = await fetch(`http://localhost:3001/dietPlan/user/${user.id}`);
+        const data = await res.json();
+        setDietas(data);
+      } catch (err) {
+        console.error("Erro ao buscar dietas:", err);
+      }
+    };
+
+    fetchDietas();
+  }, [user?.id]);
+
+  const toggleDieta = (index) => {
+    setDietaAberta(dietaAberta === index ? null : index);
+    setRefeicaoAberta(null);
   };
 
- 
+  const toggleRefeicao = (index) => {
+    setRefeicaoAberta(refeicaoAberta === index ? null : index);
+  };
 
   return (
     <div className="plano-dieta-container">
-            <Perfil/>
-          <Menu
-              links={[
-                  { label: "Home", href: "/homeAluno"},
-                  {label: "Aulas", href:"/aulaAluno"},
-                  {label: "Treino", href: "/treinoAluno"},
-                  {label: "Dieta", href: "/dietaAluno" },
-                  {label: "Liftly Market", href: "/listaProfissionais"}
-                    ]}
-              />
+      <Perfil />
+      <Menu
+        links={[
+          { label: "Home", href: "/homeAluno" },
+          { label: "Aulas", href: "/aulaAluno" },
+          { label: "Treino", href: "/treinoAluno" },
+          { label: "Dieta", href: "/dietaAluno" },
+          { label: "Liftly Market", href: "/listaProfissionais" }
+        ]}
+      />
 
       <h1>Plano Alimentar</h1>
 
-      {dieta.map((refeicao, index) => (
-        <div key={index} className="card-dieta">
+      {dietas.length === 0 && <p className="nenhuma-dieta">Nenhuma dieta disponível no momento.</p>}
+
+      {dietas.map((dieta, i) => (
+        <div key={i} className="card-dieta">
           <div className="topo-card">
             <div>
-              <strong><MdFoodBank className='icon' /> {refeicao.nomeRefeicao}</strong>
-              <p>Calorias: {refeicao.calorias}</p>
+              <strong><MdFoodBank className='icon' /> {dieta.nomeDieta || `Dieta ${i + 1}`}</strong>
+              <p>Total de Refeições: {dieta.refeicoes.length}</p>
             </div>
-            <button onClick={() => toggleDetalhes(index)}>
-              {detalheAberto === index ? 'Fechar' : 'Ver detalhes'}
+            <button onClick={() => toggleDieta(i)}>
+              {dietaAberta === i ? 'Fechar' : 'Ver refeições'}
             </button>
           </div>
 
-          {detalheAberto === index && (
-            <div className="detalhes-dieta">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Alimentos</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {refeicao.alimentos.map((item, i) => (
-                    <tr key={i}>
-                      <td>{item.alimento}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+          {dietaAberta === i && (
+            <div className="refeicoes-bloco">
+              {dieta.refeicoes.map((refeicao, j) => (
+                <div key={j} className="subcard-dieta">
+                  <div className="topo-subcard">
+                    <div>
+                      <strong>{refeicao.nomeRefeicao}</strong>
+                      <p>Horário: {refeicao.horario}</p>
+                      <p>Data: {new Date(refeicao.dataCriacao).toLocaleDateString()}</p>
+                    </div>
+                    <button onClick={() => toggleRefeicao(j)}>
+                      {refeicaoAberta === j ? 'Fechar detalhes' : 'Ver detalhes'}
+                    </button>
+                  </div>
+
+                  {refeicaoAberta === j && (
+                    <div className="detalhes-dieta">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Alimento</th>
+                            <th>Qtd</th>
+                            <th>Modo de Preparo</th>
+                            <th>Carboidrato (g)</th>
+                            <th>Proteína (g)</th>
+                            <th>Gordura (g)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {refeicao.alimentos.map((item, k) => (
+                            <tr key={k}>
+                              <td>{item.nome}</td>
+                              <td>{item.quantidade}</td>
+                              <td>{item.modoDePreparo}</td>
+                              <td>{item.carboidrato}</td>
+                              <td>{item.proteina}</td>
+                              <td>{item.gordura}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           )}
         </div>

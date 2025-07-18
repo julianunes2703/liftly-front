@@ -113,3 +113,25 @@
   padding: 6px 10px;
   cursor: pointer;
 }
+
+.buscar-aluno label {
+  font-weight: bold;
+  color: #2e8b57;
+  font-size: 16px;
+}
+
+.buscar-aluno select {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+.buscar-aluno select:focus {
+  border-color: #2e8b57;
+  outline: none;
+}
+

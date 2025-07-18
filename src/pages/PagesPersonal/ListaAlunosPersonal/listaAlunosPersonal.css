@@ -1,0 +1,41 @@
+.tabela-alunos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabela-alunos th,
+.tabela-alunos td {
+  border-bottom: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.tabela-alunos th {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-editar {
+  background-color: #4caf50;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-editar:hover {
+  background-color: #3e8e41;
+}
+
+.conteudo p {
+  margin-top: 20px;
+  font-size: 16px;
+}

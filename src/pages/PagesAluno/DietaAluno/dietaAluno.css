@@ -36,6 +36,15 @@
     cursor: pointer;
   }
   
+  .topo-subcard button {
+    background-color: white;
+    color: #5BBA89;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
   .detalhes-dieta {
     margin-top: 15px;
   }

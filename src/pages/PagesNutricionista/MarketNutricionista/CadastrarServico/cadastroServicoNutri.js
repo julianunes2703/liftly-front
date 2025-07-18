@@ -13,7 +13,6 @@ function CadastroServicoNutri(){
             links={[
                 {label: "Home", href: "/homeNutricionista"},
                 {label: "Criar Dieta", href:"/marketNutricionistaDieta"},
-                {label:"Meus Alunos", href:"/marketNutricionistaAlunos"},
                 {label: "Cadastrar Anúncio", href:"/cadastroServicoNutri"}
             ]}/>
 

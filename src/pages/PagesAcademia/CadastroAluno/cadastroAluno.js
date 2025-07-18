@@ -66,11 +66,37 @@ const CadastrarAluno = () => {
         }
     };
 
-    // Função para excluir aluno (lógica local, futuro: interagir com backend)
-    const handleRemoverAluno = async (id) => {
-        // Lógica para remover do estado local (front-end)
-        setAlunos(alunos.filter(aluno => aluno.id !== id));
-    };
+    const handleRemoverAluno = async (alunoId, alunoName) => {
+    const confirmacao = window.confirm(`Tem certeza que deseja desvincular o aluno ${alunoName} da sua academia?`);
+
+    if (!confirmacao) {
+        return;
+    }
+
+    const token = localStorage.getItem('tokenAcademia');
+    if (!token) {
+        setErro("Você precisa estar logado como Academia para desvincular alunos.");
+        return;
+    }
+
+    try {
+        await axios.delete(`http://localhost:3001/usergym/${alunoId}/unlink`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        setAlunos(alunos.filter(aluno => aluno.id !== alunoId)); // Atualize seu estado de alunos aqui
+        setErro("");
+        alert(`Aluno ${alunoName} desvinculado com sucesso!`);
+    } catch (erro) {
+        const errorMessage = erro.response?.data?.error || erro.message || 'Erro desconhecido ao desvincular aluno.';
+        console.error("Erro ao desvincular aluno:", erro.response?.data || erro);
+        setErro(errorMessage);
+        alert(`Erro ao desvincular aluno: ${errorMessage}`);
+    }
+};
+
 
     const fetchAlunos = async () => {
     console.log("🔍 Buscando alunos...");
@@ -165,7 +191,10 @@ const CadastrarAluno = () => {
                                     <p><strong>Nome:</strong> {aluno.name}</p> {/* Usa 'aluno.name' */}
                                     <p><strong>Email:</strong> {aluno.email}</p>
                                     <p><strong>Telefone:</strong> {aluno.telefone}</p>
-                                    <button className="apagar" onClick={() => handleRemoverAluno(aluno.id)}>Excluir</button>
+                                   <button onClick={() => handleRemoverAluno(aluno.id, aluno.name)}>
+                                        Excluir
+                                    </button>
+
                                 </div>
                             ))
                         )}

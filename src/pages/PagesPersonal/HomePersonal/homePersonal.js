@@ -16,15 +16,17 @@ function HomePersonal() {
           <Menu
         links={[
             { label: "Home", href: "/homePersonal"},
-            {label: "Liftly Market", href: "/MarketPersonalFicha"}
+            { label: "Criar ficha", href: "/marketPersonalFicha" },
+            { label: "Cadastrar Anúncio", href: "/cadastroServicoPersonal" },
+
               ]}/>
 
       <div className="img-container">
         <div className="homePersonal-body">
           <h1>Bem vindo, Personal!</h1>
           <div className="botoes">
-            <button onClick={() => navigate("/marketPersonalAlunos")}>Lista de alunos</button>
-            <button onClick={() => navigate("/marketPersonalFicha")}>Liftly Market</button>
+            <button onClick={() => navigate("/marketPersonalFicha")}>Criar Ficha</button>
+              <button onClick={() => navigate("/cadastroServicoPersonal")}>Cadastrar Novo Anúncio</button>
           </div>
         </div>
         <div className="img">

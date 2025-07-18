@@ -21,6 +21,8 @@ export default function CadastrarAulas() {
    const [mostrarModal, setMostrarModal] = useState(false);
    const [professores, setProfessores] = useState([]);
   const [selectedProfessorId, setSelectedProfessorId] = useState("");
+  
+
 
   // Puxa o token salvo no localStorage
   const getToken = () => localStorage.getItem('tokenAcademia');
@@ -192,6 +194,7 @@ export default function CadastrarAulas() {
                 onChange={e => setHorario(e.target.value)}
               />
             </div>
+           
             <div className="input-field">
               <FaListUl className="icon"/>
               <input

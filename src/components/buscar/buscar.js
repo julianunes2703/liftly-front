@@ -10,7 +10,8 @@ function Buscar({ value, onChange, placeholder = "Buscar...", onSearch }) {
         type="text"
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
+
       />
       <button className="botao-buscar" onClick={onSearch}>
             <HiOutlineMagnifyingGlass size={20} />

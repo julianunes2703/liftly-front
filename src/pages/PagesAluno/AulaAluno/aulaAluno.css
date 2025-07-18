@@ -1,102 +1,186 @@
-
+/* Container principal do componente */
 .container {
     padding: 20px;
     border-radius: 10px;
-    color: white;
-  }
-  
-  .button {
+    color: white; /* Cor do texto geral no container */
+}
+
+/* Títulos das seções, como "Aulas Disponíveis por Dia" e "Meus Agendamentos" */
+.section-title {
+    color: #4caf84; /* Cor verde para os títulos das seções */
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Estilos para o botão de seleção de dias (se você decidir mantê-lo) */
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     color: #4caf84;
     font-weight: 200;
-  }
-  
-  .button-text {
+    margin-bottom: 20px; /* Adicionado espaço abaixo do botão */
+}
+
+.button-text {
     font-size: 18px;
     margin-right: 10px;
     color: #4caf84;
     font-weight: bold;
-  }
-  
-  .arrow {
+}
+
+.arrow {
     font-size: 30px;
-    transition: 0.3s;
+    transition: transform 0.3s ease-in-out; /* Transição mais suave */
     color: #4caf84;
-  }
-  
-  .arrow-rotate {
+}
+
+.arrow-rotate {
     transform: rotate(180deg);
-  }
-  
-  .day-list {
+}
+
+/* Estilos para a lista de dias do seletor (se você decidir mantê-la) */
+.day-list {
     list-style-type: none;
     padding: 0;
     text-align: center;
     color: #4caf84;
     font-weight: 300;
+    margin-bottom: 20px; /* Adicionado espaço abaixo da lista */
+}
 
-  }
-  
-  .day-list-item {
+.day-list-item {
     padding: 10px;
     cursor: pointer;
     font-size: 15px;
     color: #4caf84;
-  }
+    border-bottom: 1px solid rgba(76, 175, 132, 0.3); /* Linha divisória sutil */
+}
 
-.detalhe-aula {
-    padding: 30px;
-    border-radius: 20px;
-    margin-left: 400px;
-    margin-right: 400px;
-  }
-  
-  .detalhe-aula-list {
-    list-style-type: none; 
-    padding: 0;
-    margin-bottom: 20px;
-  }
-  
-  .detalhe-aula-item {
-    display: flex; /* Utiliza flexbox para alinhar ícone e texto */
-    align-items: center; /* Alinha o ícone e o texto verticalmente */
-   margin-bottom: 20px; /* separa visualmente as aulas */
-    font-size: 20px; /* Tamanho da fonte */
+.day-list-item:hover {
+    background-color: rgba(76, 175, 132, 0.1); /* Efeito hover */
+}
+
+/* --- Novos estilos para a estrutura agrupada por dia --- */
+
+/* Estilo para a div que engloba as aulas de cada dia da semana */
+.day-section {
+    background-color: #333; /* Fundo mais escuro para as seções de dia */
+    border-radius: 15px; /* Bordas mais arredondadas */
+    padding: 25px 30px; /* Mais preenchimento */
+    margin: 0 auto 30px auto; /* Centraliza e adiciona espaço inferior, removendo margens fixas */
+    max-width: 900px; /* Define uma largura máxima para melhor leitura */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
+}
+
+/* Título de cada dia da semana dentro de .day-section */
+.day-section h3 {
+    color: #4caf84; /* Cor verde para o nome do dia */
     text-align: center;
-    
-  }
-  
-  .icons, .lotacao {
-    margin-right: 8px; /* Espaço entre o ícone e o texto */
-    font-size: 18px; /* Ajuste no tamanho do ícone */
-  }
+    margin-bottom: 25px; /* Espaço abaixo do título do dia */
+    font-size: 1.8em; /* Tamanho maior para o título do dia */
+    border-bottom: 2px solid #5BBA89; /* Linha de destaque abaixo do título do dia */
+    padding-bottom: 10px;
+    text-transform: uppercase; /* Deixa o nome do dia em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+}
 
-  .agendar-btn{
-    background-color: white;
-    color: #5BBA89;
-    border: none;
-    border-radius: 20px;
-    padding: 10px;
-    font-size: 15px;
-    font-weight: bold;
-  }
+/* Mensagem quando não há aulas para um dia específico */
+.day-section .no-classes-message {
+    text-align: center;
+    color: #bbb;
+    padding: 15px 0;
+    font-style: italic;
+}
 
-  .agendar-btn:hover {
-    background-color: gray;
-  }
+/* --- Estilos para os cartões de aula --- */
 
+/* Ajustado para centralizar e ter uma largura máxima */
+.detalhe-aula {
+    padding: 0; /* Removido padding extra */
+    margin: 0 auto; /* Centraliza no container, o espaçamento será feito pelas .day-section */
+    max-width: 900px; /* Mantém a largura máxima para consistência */
+}
+
+/* Estilo do cartão individual da aula */
 .aula-card {
- background-color: #4caf84;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  color: white;
+    background-color: #4caf84; /* Cor de fundo do cartão da aula */
+    border-radius: 15px; /* Bordas arredondadas */
+    padding: 15px 20px; /* Preenchimento interno */
+    margin-bottom: 15px; /* Espaço entre os cartões de aula */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    color: white;
+    display: flex; /* Transforma em flexbox para alinhar conteúdo */
+    flex-direction: column; /* Organiza os itens em coluna */
+    gap: 10px; /* Espaço entre os itens da lista da aula */
+}
+
+/* Lista de detalhes da aula dentro do cartão (horário, nome, professor, vagas) */
+.detalhe-aula-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Remove margem padrão */
+    display: flex; /* Usa flexbox para os itens ficarem lado a lado */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha em telas pequenas */
+    gap: 15px; /* Espaço entre os itens da lista (hora, nome, etc.) */
+    justify-content: space-between; /* Distribui o espaço entre os itens */
+    align-items: center; /* Alinha verticalmente os itens */
+}
+
+.detalhe-aula-item {
+    display: flex; /* Flexbox para ícone e texto */
+    align-items: center;
+    font-size: 1.1em; /* Ajustado tamanho da fonte */
+    color: white; /* Cor do texto dentro do cartão */
+    flex-grow: 1; /* Permite que os itens cresçam para ocupar espaço */
+    white-space: nowrap; /* Evita quebra de linha dentro do item */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Adiciona reticências se o texto for muito longo */
+}
+
+.icons {
+    margin-right: 8px;
+    font-size: 1.3em; /* Ajuste no tamanho do ícone */
+    color: white; /* Cor do ícone dentro do cartão */
+}
+
+/* Botões de agendar/cancelar */
+.agendar-btn {
+    background-color: white;
+    color: #5BBA89; /* Cor do texto do botão */
+    border: none;
+    border-radius: 25px; /* Mais arredondado */
+    padding: 12px 20px; /* Mais padding */
+    font-size: 1em; /* Tamanho da fonte */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+    min-width: 120px; /* Largura mínima para os botões */
+}
+
+.agendar-btn:hover {
+    background-color: #f0f0f0; /* Cor mais clara no hover */
+    color: #4caf84; /* Escurece a cor do texto no hover */
+}
+
+.agendar-btn:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+.agendar-btn.cancelar {
+    background-color: #ff6347; /* Tomate para cancelar */
+    color: white;
+}
+
+.agendar-btn.cancelar:hover {
+    background-color: #e55338; /* Tomate mais escuro no hover */
+    color: white;
 }
 
 
-  
-  

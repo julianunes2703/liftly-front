@@ -24,12 +24,11 @@ import CadastroAcademia from './pages/PagesAcademia/CadastroAcademia/cadastroAca
 
 import HomeNutricionista from './pages/PagesNutricionista/HomeNutricionista/homeNutricionista';
 import HomePersonal from './pages/PagesPersonal/HomePersonal/homePersonal';
-import MarketPersonalAlunos from './pages/PagesPersonal/MarketPersonal/marketPersonal-alunos';
 import MarketPersonalFicha from './pages/PagesPersonal/MarketPersonal/marketPersonal-ficha';
-import MarketNutricionistaAlunos from './pages/PagesNutricionista/MarketNutricionista/marketNutricionista-alunos';
 import MarketNutricionistaDieta from './pages/PagesNutricionista/MarketNutricionista/marketNutricionista-dieta';
 import CadastroServicoNutri from './pages/PagesNutricionista/MarketNutricionista/CadastrarServico/cadastroServicoNutri';
 import CadastroServicoPersonal from './pages/PagesPersonal/MarketPersonal/CadastroServico/cadasatroServicoPersonal';
+import ListaAlunoPersonal from './pages/PagesPersonal/ListaAlunosPersonal/listaAlunosPersonal';
 
 
 
@@ -64,14 +63,13 @@ function App() {
         <Route path='/cadastroAcademia' element={<CadastroAcademia/>} />
 
         <Route path='/homeNutricionista' element={<HomeNutricionista/>} />
-        <Route path='/marketNutricionistaAlunos' element={<MarketNutricionistaAlunos/>} />
         <Route path='/marketNutricionistaDieta' element={<MarketNutricionistaDieta/>} />
         <Route path='/cadastroServicoNutri' element={<CadastroServicoNutri/>} />
 
         <Route path='/homePersonal' element={<HomePersonal/>} />
-        <Route path='/marketPersonalAlunos' element={<MarketPersonalAlunos/>} />
         <Route path='/marketPersonalFicha' element={<MarketPersonalFicha/>} />
         <Route path='/cadastroServicoPersonal' element={<CadastroServicoPersonal/>} />
+        <Route path='/listaAlunosPersonal' element={<ListaAlunoPersonal/>}/>
 
         
       </Routes>
